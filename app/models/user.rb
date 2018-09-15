@@ -4,7 +4,6 @@ class User < ApplicationRecord
          :confirmable
 
   has_many :ownerships
-  has_many :owned_groups, through: :ownerships, class_name: 'Group'
+  has_many :owned_groups, through: :ownerships, source: :group
 
-  
 end
