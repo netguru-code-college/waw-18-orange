@@ -6,4 +6,6 @@ class User < ApplicationRecord
   has_many :ownerships
   has_many :owned_groups, through: :ownerships, source: :group
 
+  has_many :memberships
+  has_many :joined_groups, through: :memberships, source: :group
 end
