@@ -10,7 +10,8 @@ class Group < ApplicationRecord
 
   accepts_nested_attributes_for :members
 
-  def prepare_payments(amount)
+  def prepare_payments(total_amount)
+    amount = total_amount.to_d / members.count
     members.each do |member|
       payments.create(user: member, amount: amount)
     end

@@ -15,8 +15,8 @@ class GroupsController < ApplicationController
     @group = Group.new(group_params)
     @group.organizers << current_user
     if @group.save
-      amount = @group.total_amount.to_d / @group.members.count
-      @group.prepare_payments(amount)
+      total_amount = @group.total_amount
+      @group.prepare_payments(total_amount)
       redirect_to @group, notice: 'Your group was created successfully'
     else
       render :new
