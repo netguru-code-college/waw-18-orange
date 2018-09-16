@@ -12,7 +12,21 @@
       - @group.organizers.each do |organizer|
         = organizer.username
   %div
-    %h3
-      Members:
-      - @group.members.each do |member|
-        = member.username + ','
+    %table.table.table-striped.table-hover
+      %thead
+        %tr
+          %th
+            Member
+          %th
+            Amount to pay
+          %th
+            Status
+      %tbody
+        - @group.payments.each do |payment|
+          %tr
+            %td
+              = payment.user.username
+            %td
+              = payment.amount
+            %td
+              = payment.paid

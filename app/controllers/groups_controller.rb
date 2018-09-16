@@ -13,11 +13,13 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     @group.organizers << current_user
+    create_payments
     if @group.save
       redirect_to @group, notice: 'Your group was created successfully'
     else
       render :new
     end
+
   end
 
   def show
@@ -42,10 +44,17 @@ class GroupsController < ApplicationController
   private
 
   def group_params
-    params.require(:group).permit(:name, :description, member_ids: [])
+    params.require(:group).permit(:name, :description, :amount, member_ids: [])
   end
 
   def set_group
     @group = Group.find(params[:id])
   end
+
+  def create_payments
+    @group.members.each do |member|
+      Payment.create(user: member, group: @group, amount: @group.amount)
+    end
+  end
+
 end
