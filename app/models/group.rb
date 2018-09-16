@@ -1,5 +1,5 @@
 class Group < ApplicationRecord
-  attr_accessor :amount
+  attr_accessor :total_amount
   has_many :ownerships
   has_many :organizers, through: :ownerships, source: :user
 

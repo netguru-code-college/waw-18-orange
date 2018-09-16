@@ -14,9 +14,9 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     @group.organizers << current_user
-    amount = @group.amount
-    @group.prepare_payments(amount)
     if @group.save
+      amount = @group.total_amount.to_d / @group.members.count
+      @group.prepare_payments(amount)
       redirect_to @group, notice: 'Your group was created successfully'
     else
       render :new
@@ -46,7 +46,7 @@ class GroupsController < ApplicationController
   private
 
   def group_params
-    params.require(:group).permit(:name, :description, :amount, member_ids: [])
+    params.require(:group).permit(:name, :description, :total_amount, member_ids: [])
   end
 
   def set_group
