@@ -7,12 +7,12 @@ class GroupsController < ApplicationController
 
   def new
     @group = Group.new
-    @group.memberhips.build
+    @group.members.build
   end
 
   def create
     @group = Group.new(group_params)
-    @group.ownerships << current_user
+    @group.organizers << current_user
     if @group.save
       redirect_to @group, notice: 'Your group was created successfully'
     else
@@ -42,7 +42,7 @@ class GroupsController < ApplicationController
   private
 
   def group_params
-    params.require(:group).permit(:name, :description, memberships_attributes: [:id] )
+    params.require(:group).permit(:name, :description, member_ids: [])
   end
 
   def set_group
