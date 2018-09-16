@@ -39,4 +39,4 @@
               = link_to 'Mark as Paid', payment_path(payment, paid: true ), method: :patch
               %br
               = link_to 'Mark as Unpaid', payment_path(payment, paid: false ), method: :patch
-             
+= link_to('Delete', group_path(@group), method: :delete, class: 'btn btn-primary')
