@@ -1,0 +1,18 @@
+%div
+  %h2
+    = @group.name
+.well
+  %div
+    %h3
+      Description:
+      = @group.description
+  %div
+    %h3
+      Organizer:
+      - @group.organizers.each do |org|
+        = org.username
+  %div
+    %h3
+      Members:
+      - @group.members.each do |org|
+        = org.username+','
