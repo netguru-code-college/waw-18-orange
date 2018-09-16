@@ -14,7 +14,7 @@ class GroupsController < ApplicationController
     @group = Group.new(group_params)
     @group.ownerships << current_user
     if @group.save
-      redirect_to @group, notice: "Your group was created successfully"
+      redirect_to @group, notice: 'Your group was created successfully'
     else
       render :new
     end
@@ -28,15 +28,15 @@ class GroupsController < ApplicationController
 
   def update
     if @group.update(post_params)
-    redirect_to @group, notice: "Your group was edited successfully"
+    redirect_to @group, notice: 'Your group was edited successfully'
     else
       render :edit
     end
   end
 
   def destroy
-    @group.delete
-    redirect_to groups_path, notice: "Your post was deleted"
+    @group.destroy
+    redirect_to groups_path, notice: 'Your post was deleted'
   end
 
   private
@@ -48,5 +48,4 @@ class GroupsController < ApplicationController
   def set_group
     @group = Group.find(params[:id])
   end
-
 end
