@@ -2,5 +2,5 @@
   = f.input :name
   = f.input :description
   = f.input :amount, as: :decimal
-  = f.association :members, as: :check_boxes, label_method: :username
+  = f.association :members, collection: User.where.not(id: current_user.id), as: :check_boxes, label_method: :username
   = f.button :submit

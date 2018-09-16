@@ -14,6 +14,7 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     @group.organizers << current_user
+    @group.members << current_user
     create_payments
     if @group.save
       redirect_to @group, notice: 'Your group was created successfully'
