@@ -1,5 +1,6 @@
 = simple_form_for @group do |f|
   = f.input :name
   = f.input :description
+  = f.input :amount, as: :decimal
   = f.association :members, as: :check_boxes, label_method: :username
   = f.button :submit

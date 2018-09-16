@@ -7,4 +7,6 @@ class User < ApplicationRecord
 
   has_many :memberships
   has_many :joined_groups, through: :memberships, source: :group
+
+  has_many :payments
 end
