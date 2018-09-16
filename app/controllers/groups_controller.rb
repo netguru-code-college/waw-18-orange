@@ -32,7 +32,7 @@ class GroupsController < ApplicationController
   end
 
   def update
-    if @group.update(post_params)
+    if @group.update(group_params)
     redirect_to @group, notice: 'Your group was edited successfully'
     else
       render :edit
@@ -41,7 +41,7 @@ class GroupsController < ApplicationController
 
   def destroy
     @group.destroy
-    redirect_to groups_path, notice: 'Your post was deleted'
+    redirect_to groups_path, notice: 'Your group was deleted'
   end
 
   private
