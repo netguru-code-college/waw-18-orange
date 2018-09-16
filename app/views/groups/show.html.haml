@@ -36,7 +36,8 @@
               - else
                 = content_tag(:span, 'Pending', class: 'label label-danger')
             %td
-              = link_to 'Mark as Paid', payment_path(payment, paid: true ), method: :patch
-              %br
-              = link_to 'Mark as Unpaid', payment_path(payment, paid: false ), method: :patch
-             
+              - if @group.organizers.first == current_user || payment.user == current_user
+                = link_to 'Mark as Paid', payment_path(payment, paid: true ), method: :patch
+                %br
+                = link_to 'Mark as Unpaid', payment_path(payment, paid: false ), method: :patch
+              - else
