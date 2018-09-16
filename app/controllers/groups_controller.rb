@@ -14,7 +14,8 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     @group.organizers << current_user
-    create_payments
+    amount = @group.amount
+    @group.prepare_payments(amount)
     if @group.save
       redirect_to @group, notice: 'Your group was created successfully'
     else
@@ -50,12 +51,6 @@ class GroupsController < ApplicationController
 
   def set_group
     @group = Group.find(params[:id])
-  end
-
-  def create_payments
-    @group.members.each do |member|
-      Payment.create(user: member, group: @group, amount: @group.amount)
-    end
   end
 
 end
