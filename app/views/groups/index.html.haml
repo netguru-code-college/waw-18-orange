@@ -1,2 +1,3 @@
-= @groups.each do |group|
-  group.inspect
+- @groups.each do |group|
+    = link_to(group.name, group_path(group))
+    %hr

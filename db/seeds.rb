@@ -7,22 +7,13 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 User.create(email: 'user@test.com', password: 'foobar', password_confirmation: 'foobar')
 
-#Group.create(name: 'group1', description: 'description')
-
-#5.times do
-  User.create!(
-    username: Faker::Witcher.character
-  )
-
-#15.times do
+5.times do
   Group.create!(
     name: Faker::GameOfThrones.character,
     description: Faker::GameOfThrones.quote,
   )
 end
 
-#user = User.last
-#group = Group.last
-#user.owned_groups << group
-
-
+user = User.last
+group = Group.last
+user.owned_groups << group
