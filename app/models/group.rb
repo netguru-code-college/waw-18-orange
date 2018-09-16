@@ -4,5 +4,7 @@ class Group < ApplicationRecord
 
   has_many :memberships
   has_many :members, through: :memberships, source: :user
+  
+  accepts_nested_attributes_for :memberships
 
 end
