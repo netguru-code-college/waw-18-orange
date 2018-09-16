@@ -1,8 +1,8 @@
-%p You manage #{@owned_groups.count} groups
+%h3 You manage #{@owned_groups.count} groups
 - @owned_groups.each do |owned_group|
     = link_to(owned_group.name, group_path(owned_group))
     %hr
-%p You are member of #{@joined_groups.count} groups
+%h3 You are member of #{@joined_groups.count} groups
 - @joined_groups.each do |joined_group|
     = link_to(joined_group.name, group_path(joined_group))
     %hr
