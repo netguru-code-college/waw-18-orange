@@ -1,9 +1,9 @@
 class GroupsController < ApplicationController
   def index
-    current_user.joined_groups.all
+    @groups = Group.all
   end
 
   def show
   end
-  
+
 end
