@@ -29,4 +29,7 @@
             %td
               = payment.amount
             %td
-              = payment.paid
+              - if payment.paid
+                = content_tag(:span, 'Paid', class: 'label label-success')
+              - else
+                = content_tag(:span, 'Pending', class: 'label label-danger')
