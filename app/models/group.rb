@@ -9,4 +9,10 @@ class Group < ApplicationRecord
   has_many :payments
 
   accepts_nested_attributes_for :members
+
+  def prepare_payments(amount)
+    members.each do |member|
+      payments.create(user: member, amount: amount)
+    end
+  end
 end

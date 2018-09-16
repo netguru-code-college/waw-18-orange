@@ -1,3 +1,10 @@
-- @groups.each do |group|
-    = link_to(group.name, group_path(group))
+%p You manage #{@owned_groups.count} groups
+= link_to 'Create new group', new_group_path
+- @owned_groups.each do |owned_group|
+    = link_to(owned_group.name, group_path(owned_group))
     %hr
+%p You are member of #{@joined_groups.count} groups
+- @joined_groups.each do |joined_group|
+    = link_to(joined_group.name, group_path(joined_group))
+    %hr
+

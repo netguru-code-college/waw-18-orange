@@ -21,6 +21,8 @@
             Amount to pay
           %th
             Status
+          %th
+            Action
       %tbody
         - @group.payments.each do |payment|
           %tr
@@ -33,3 +35,8 @@
                 = content_tag(:span, 'Paid', class: 'label label-success')
               - else
                 = content_tag(:span, 'Pending', class: 'label label-danger')
+            %td
+              = link_to 'Mark as Paid', payment_path(payment, paid: true ), method: :patch
+              %br
+              = link_to 'Mark as Unpaid', payment_path(payment, paid: false ), method: :patch
+             
