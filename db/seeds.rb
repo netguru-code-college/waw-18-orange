@@ -5,6 +5,24 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-User.create(email: 'user@test.com', password: 'foobar', password_confirmation: 'foobar', joined_groups: 1)
+User.create(email: 'user@test.com', password: 'foobar', password_confirmation: 'foobar')
 
-Group.create(name: 'group1', description: 'description')
+#Group.create(name: 'group1', description: 'description')
+
+#5.times do
+  User.create!(
+    username: Faker::Witcher.character
+  )
+
+#15.times do
+  Group.create!(
+    name: Faker::GameOfThrones.character,
+    description: Faker::GameOfThrones.quote,
+  )
+end
+
+#user = User.last
+#group = Group.last
+#user.owned_groups << group
+
+
