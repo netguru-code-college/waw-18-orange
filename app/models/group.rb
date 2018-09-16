@@ -12,7 +12,7 @@ class Group < ApplicationRecord
 
   def prepare_payments(amount)
     members.each do |member|
-      Payment.create(user: member, group: self, amount: amount)
+      payments.create(user: member, amount: amount)
     end
   end
 end
