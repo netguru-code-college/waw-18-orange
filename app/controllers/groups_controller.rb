@@ -14,6 +14,7 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     @group.organizers << current_user
+    @group.members << current_user
     amount = @group.amount
     @group.prepare_payments(amount)
     if @group.save
